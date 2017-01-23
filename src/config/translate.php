@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'languages'     => [
+        'en' => 'en',
+        'fr' => 'fr',
+    ],
     'subdomains'    => [
         'fr'    => 'fr',
         'ch'    => 'fr',

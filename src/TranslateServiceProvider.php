@@ -9,17 +9,8 @@ class TranslateServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // use this if your package has views
-//        $this->loadViewsFrom(realpath(__DIR__.'/resources/views'), 'escuccim');
-
-        // use this if your package has lang files
-//        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'escuccim');
-
         // use this if your package has routes
         $this->setupRoutes($this->app->router);
-
-        // load our migrations
-//        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         // publish config if necessary
         $this->publishes([
@@ -55,13 +46,13 @@ class TranslateServiceProvider extends ServiceProvider
 
         // specify the config file
         config([
-            'config/sitemap.php',
+            'config/translate.php',
         ]);
     }
     private function registerClass()
     {
-        $this->app->bind('escuccim',function($app){
-            return new SiteMapClass($app);
+        $this->app->bind('translate',function($app){
+            return new TranslateClass($app);
         });
     }
 }

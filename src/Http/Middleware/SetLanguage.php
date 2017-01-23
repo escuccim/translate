@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Escuccim\Translate\Http\Middleware;
 
 use Closure;
 

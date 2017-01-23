@@ -16,5 +16,16 @@ class TranslateClass
         return config('translate.languages');
     }
 
-    
+    public static function dropDown(){
+        $langs = config('translate.languages');
+
+        $html = '<ul class="dropdown-menu">';
+
+        foreach($langs as $lang => $display){
+            $html .= '<li><a href="/setlang/' . $lang . '">' . $display . '</a>';
+        }
+        $html .= '</ul>';
+
+        return $html;
+    }
 }

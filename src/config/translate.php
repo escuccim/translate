@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'use_subdomain' => true,
     'languages'     => [
         'en' => 'en',
         'fr' => 'fr',

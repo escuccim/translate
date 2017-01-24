@@ -14,13 +14,17 @@ class SetLanguage
      * @return mixed
      */
 	public function handle($request, Closure $next)
-	{
-	    $subdomain = app_subdomain();
-        if($subdomain) {
-            $lang = config('skooch.subdomains')[$subdomain];
-            session(['locale' => $lang]);
-            App()->setLocale($lang);
-	    }
+    {
+        if (config('translate.use_subdomain')) {
+            $subdomain = app_subdomain();
+            if ($subdomain) {
+                $lang = config('skooch.subdomains')[$subdomain];
+                session(['locale' => $lang]);
+                App()->setLocale($lang);
+            }
+        }
+	    setLanguage();
+
 	    return $next($request);
 	}
 }

@@ -1,10 +1,11 @@
 {
     "name": "escuccim/translate",
     "type": "library",
-    "description": "A Laravel translation package",
+    "description": "A Laravel translation/localization package",
     "keywords": [
         "escuccim",
-        "translate"
+        "translate",
+        "localization"
     ],
     "homepage": "https://github.com/escuccim/translate",
     "license": "MIT",
@@ -26,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "escuccim\\translate\\": "src"
+            "Escuccim\\Translate\\": "src"
         },
         "files": [
             "src/functions.php"
@@ -34,7 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "escuccim\\translate\\": "tests"
+            "Escuccim\\Translate\\": "tests"
         }
     },
     "scripts": {

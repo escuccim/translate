@@ -16,8 +16,6 @@ Via Composer
 ``` bash
 $ composer require escuccim/translate
 ```
-
-## Usage
 Register the middleware in /app/Http/Kernel.php in the 'web' array of the $middlewareGroups array:
 ```php
 'web' => [
@@ -27,15 +25,30 @@ Register the middleware in /app/Http/Kernel.php in the 'web' array of the $middl
 ```
 Make sure that the middleware is after the StartSession middleware if you wish to use session based translation.
 
+Publish the config file with
+```bash
+php artisan vendor:publish
+```
+This will place the config file in /config/translate.php.
+
+## Usage
+The config files has the following keys:
+- use_subdomain - boolean - whether you wish to use subdomain based translation
+- languages - array of languages as follows - 'language' => 'display', where language is the language and display is how you want to display the language in the drop-down menu, if you use it.
+- subdomains - array of languages: 'subdomain' => 'language'. This is used by the middleware to map the subdomain to the language setting
+- date_formats - array of date formats for strftime: 'language' => 'locale', where locale is the format of the dates you wish to use. Note that you must have the date formats installed on your web server for this to work properly. The default locale is en_US_POSIX.
+
+I also include a route:
+    /setlang/{lang} 
+Which sets a session variable to {lang} which will override the subdomain if it is set. 
+
+Lastly I include a function to output a Bootstrap drop-down menu which will use the data in the languages key of the config to generate links to set the language in session. This can be accessed with \Escuccim\Translate\TranslateClass::dropDown().
+
+The middleware will first check if subdomain based translation is on, if so it will set the application locale to whatever is specified for the subdomain in the config file. Then if a session variable called 'locale' exists it will override the locale to correspond to the session. This allows you to default to a locale based on subdomain, but then have the user override this if they wish.
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
-```
 
 ## Contributing
 

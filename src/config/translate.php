@@ -10,7 +10,7 @@ return [
         'fr'    => 'fr',
         'ch'    => 'fr',
         'www'   => 'en',
-        'default'   => config('app.locale'),
+        'default'   => 'en',
     ],
     'date_formats'  => [
         'en'  => 'en_US_POSIX',

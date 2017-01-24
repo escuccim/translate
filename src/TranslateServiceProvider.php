@@ -9,7 +9,6 @@ class TranslateServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // use this if your package has routes
         $this->setupRoutes($this->app->router);
 
         // publish config if necessary

@@ -13,6 +13,7 @@ return [
         'default'   => config('app.locale'),
     ],
     'date_formats'  => [
+        'en'  => 'en_US_POSIX',
         'fr'  => 'fr_CH.UTF-8',
     ],
 ];

@@ -15,16 +15,22 @@ class SetLanguage
      */
 	public function handle($request, Closure $next)
     {
+        // if we have language specified by subdomain set the app to use that
         if (config('translate.use_subdomain')) {
             $subdomain = app_subdomain();
             if ($subdomain) {
-                $lang = config('skooch.subdomains')[$subdomain];
-                session(['locale' => $lang]);
-                App()->setLocale($lang);
+                App()->setLocale($lang = config('skooch.subdomains')[$subdomain]);
             }
         }
-	    setLanguage();
+        // if we have a language in session override the subdomain and use that
+        \App::setLocale(session('locale') ? session('locale') : config('app.locale'));
 
-	    return $next($request);
+        // if we have date formats specified in the config, set those as well
+        if(config('translate.date_formats')){
+            $dateFormat = config('translate.date_formats.' . \App::getLocale());
+            setlocale(LC_TIME, $dateFormat);
+        }
+
+        return $next($request);
 	}
 }

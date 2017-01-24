@@ -15,7 +15,7 @@ class TranslateServiceProvider extends ServiceProvider
         // publish config if necessary
         $this->publishes([
             __DIR__.'/config/translate.php' => config_path('translate.php'),
-        ]);
+        ], 'config');
 
         // use the default configuration file as fallback
         $this->mergeConfigFrom(

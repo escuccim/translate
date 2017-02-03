@@ -16,6 +16,10 @@ Via Composer
 ``` bash
 $ composer require escuccim/translate
 ```
+Register the service provider in /config/app.php 'providers' array:
+```php
+Escuccim\Translate\TranslateServiceProvider::class,
+```
 Register the middleware in /app/Http/Kernel.php in the 'web' array of the $middlewareGroups array:
 ```php
 'web' => [
@@ -61,7 +65,6 @@ If you discover any security related issues, please email skooch@gmail.com inste
 ## Credits
 
 - [Eric Scuccimarra][link-author]
-- [All Contributors][link-contributors]
 
 ## License
 

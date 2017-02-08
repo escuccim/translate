@@ -19,7 +19,12 @@ class SetLanguage
         if (config('translate.use_subdomain')) {
             $subdomain = app_subdomain();
             if ($subdomain) {
-                App()->setLocale($lang = config('translate.subdomains')[$subdomain]);
+                if(isset(config('translate.subdomains')[$subdomain])){
+                    $lang = config('translate.subdomains')[$subdomain];
+                } else {
+                    $lang = config('translate.subdomains')['default'];
+                }
+                App()->setLocale($lang);
             }
         }
         // if we have a language in session override the subdomain and use that

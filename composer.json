@@ -5,7 +5,8 @@
     "keywords": [
         "escuccim",
         "translate",
-        "localization"
+        "localization",
+        "laravel"
     ],
     "homepage": "https://github.com/escuccim/translate",
     "license": "MIT",

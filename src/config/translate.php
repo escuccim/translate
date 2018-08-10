@@ -17,6 +17,6 @@ return [
     'date_formats'  => [
         'en'  => 'en_US_POSIX',
         'fr'  => 'fr_CH.UTF-8',
-        'de'  => 'fr_CH.UTF-8',
+        'de'  => 'de_CH.UTF-8',
     ],
 ];
